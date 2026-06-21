@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lethabo Taunyane – Electrical Technician</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --amber: #FFB800;
+  --orange: #FF6B00;
+  --black: #0a0a0a;
+  --dark: #111113;
+  --surface: #18181b;
+  --border: rgba(255,184,0,0.12);
+  --text: #e4e4e7;
+  --muted: #71717a;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 60px;
+  background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--amber); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 100px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* circuit grid */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,184,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,184,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* voltage glow */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -200px; right: -200px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(255,184,0,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: var(--amber);
+}
+
+.hero-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(56px, 10vw, 96px);
+  line-height: 0.95;
+  letter-spacing: 0.03em;
+  color: #fff;
+}
+
+.hero-name span {
+  color: var(--amber);
+}
+
+.hero-title {
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--muted);
+  font-weight: 300;
+  margin-top: 16px;
+  letter-spacing: 0.04em;
+}
+
+.hero-stats {
+  display: flex;
+  gap: 48px;
+  margin-top: 56px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  border-left: 2px solid var(--amber);
+  padding-left: 16px;
+}
+
+.stat-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 40px;
+  color: #fff;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.hero-cta {
+  margin-top: 48px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--amber), var(--orange));
+  color: #000;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn-secondary:hover { border-color: var(--amber); color: var(--amber); }
+
+/* ── SECTIONS ── */
+section {
+  padding: 100px 40px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 5vw, 48px);
+  color: #fff;
+  letter-spacing: 0.04em;
+  margin-bottom: 48px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ── EXPERIENCE ── */
+.exp-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.exp-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--amber), var(--orange));
+}
+
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.exp-role {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  color: #fff;
+  letter-spacing: 0.05em;
+}
+
+.exp-company {
+  font-size: 13px;
+  color: var(--amber);
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.exp-date {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(255,184,0,0.08);
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.exp-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.exp-list li {
+  display: flex;
+  gap: 12px;
+  font-size: 14px;
+  color: #a1a1aa;
+  line-height: 1.5;
+}
+
+.exp-list li::before {
+  content: '⚡';
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 3px;
+  opacity: 0.7;
+}
+
+/* ── SKILLS ── */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.skill-pill {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text);
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.skill-pill:hover {
+  border-color: rgba(255,184,0,0.4);
+  transform: translateY(-2px);
+}
+
+.skill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--amber), var(--orange));
+  flex-shrink: 0;
+}
+
+/* ── PROJECTS ── */
+.project-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+  margin-bottom: 20px;
+}
+
+.project-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--amber);
+  border: 1px solid rgba(255,184,0,0.3);
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+}
+
+.project-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: #fff;
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.project-desc {
+  font-size: 14px;
+  color: #a1a1aa;
+  line-height: 1.6;
+}
+
+.project-highlight {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.highlight-item {
+  text-align: center;
+  background: rgba(255,184,0,0.06);
+  border: 1px solid rgba(255,184,0,0.15);
+  border-radius: 6px;
+  padding: 12px 20px;
+}
+
+.highlight-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  color: var(--amber);
+  line-height: 1;
+}
+
+.highlight-label {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ── AWARD ── */
+.award-card {
+  background: linear-gradient(135deg, rgba(255,184,0,0.08), rgba(255,107,0,0.04));
+  border: 1px solid rgba(255,184,0,0.25);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.award-icon {
+  font-size: 40px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+.award-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  color: var(--amber);
+  letter-spacing: 0.04em;
+}
+
+.award-org {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.award-desc {
+  font-size: 14px;
+  color: #a1a1aa;
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.award-stat {
+  display: inline-block;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  color: var(--amber);
+}
+
+/* ── VOLUNTEER ── */
+.volunteer-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 32px;
+}
+
+/* ── CONTACT ── */
+.contact-section {
+  text-align: center;
+  padding: 100px 40px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+}
+
+.contact-section .section-label,
+.contact-section .section-title {
+  display: block;
+  text-align: center;
+}
+
+.contact-grid {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-item-icon {
+  font-size: 20px;
+  opacity: 0.7;
+}
+
+.contact-item-label {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.contact-item-value {
+  font-size: 14px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  border-top: 1px solid var(--border);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  nav { padding: 0 20px; }
+  .nav-links { gap: 20px; }
+  .hero { padding: 100px 20px 60px; }
+  section { padding: 60px 20px; }
+  .hero-stats { gap: 28px; }
+  .award-card { flex-direction: column; gap: 12px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">LT ⚡</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Electrical Technician · Orkney, South Africa</div>
+    <h1 class="hero-name">Lethabo<br><span>Taunyane</span></h1>
+    <p class="hero-title">Self-taught electrical professional with 3+ years of hands-on experience in wiring, fault diagnosis, and SANS-compliant installations.</p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">3+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">45%</div>
+        <div class="stat-label">Production Increase</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Houses Wired Daily</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">0</div>
+        <div class="stat-label">Material Waste</div>
+      </div>
+    </div>
+
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Get in Touch</a>
+      <a href="#experience" class="btn-secondary">View My Work</a>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Where I've Worked</div>
+  <div class="section-title">Experience</div>
+
+  <div class="exp-card">
+    <div class="exp-header">
+      <div>
+        <div class="exp-role">Electrical Technician</div>
+        <div class="exp-company">Its Lit Dynamics</div>
+      </div>
+      <div class="exp-date">May 2022 – Present</div>
+    </div>
+    <ul class="exp-list">
+      <li>Installed and maintained complete electrical systems across multiple sites</li>
+      <li>Diagnosed and repaired faults efficiently, minimising downtime for clients</li>
+      <li>Ensured full SANS compliance on all installations, prioritising safety at every stage</li>
+      <li>Upgraded wiring and electrical panels to improve efficiency and reduce energy waste</li>
+      <li>Performed routine inspections and safety checks across diverse project types</li>
+      <li>Read and applied electrical schematics to guide installation and fault-finding work</li>
+    </ul>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">What I Bring</div>
+  <div class="section-title">Skills</div>
+
+  <div class="skills-grid">
+    <div class="skill-pill"><span class="skill-dot"></span>Electrical Wiring</div>
+    <div class="skill-pill"><span class="skill-dot"></span>Fault Diagnosis</div>
+    <div class="skill-pill"><span class="skill-dot"></span>Troubleshooting</div>
+    <div class="skill-pill"><span class="skill-dot"></span>SANS Compliance</div>
+    <div class="skill-pill"><span class="skill-dot"></span>Panel & Wiring Upgrades</div>
+    <div class="skill-pill"><span class="skill-dot"></span>Schematic Reading</div>
+    <div class="skill-pill"><span class="skill-dot"></span>Electronics Knowledge</div>
+    <div class="skill-pill"><span class="skill-dot"></span>Safety Inspections</div>
+    <div class="skill-pill"><span class="skill-dot"></span>Tool Proficiency</div>
+    <div class="skill-pill"><span class="skill-dot"></span>Problem Solving</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Hands-On Work</div>
+  <div class="section-title">Projects</div>
+
+  <div class="project-card">
+    <div class="project-tag">Residential</div>
+    <div class="project-title">RDP House Wiring & Installation</div>
+    <p class="project-desc">
+      Led full electrical wiring and installation for RDP housing units. Managed each job from planning through to final connection — completing multiple houses daily with zero material waste, no property damage, and no losses recorded across the entire project.
+    </p>
+    <div class="project-highlight">
+      <div class="highlight-item">
+        <div class="highlight-num">3</div>
+        <div class="highlight-label">Houses per Day</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">0</div>
+        <div class="highlight-label">Material Waste</div>
+      </div>
+      <div class="highlight-item">
+        <div class="highlight-num">0</div>
+        <div class="highlight-label">Property Damage</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-card">
+    <div class="project-tag">Volunteer · Public Health</div>
+    <div class="project-title">Park Street Clinic – Electrical Maintenance</div>
+    <p class="project-desc">
+      Volunteered to restore electrical infrastructure at Park Street Clinic, Klerksdorp (Oct 2025). Conducted a full fault-finding sweep of the facility, identifying and resolving multiple faults in worn wiring and degraded lighting. Replaced failing fluorescent light bars with energy-efficient LED fittings throughout — improving lighting quality for patients and staff.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- AWARD -->
+<section id="award">
+  <div class="section-label">Recognition</div>
+  <div class="section-title">Award</div>
+
+  <div class="award-card">
+    <div class="award-icon">🏆</div>
+    <div>
+      <div class="award-title">Best Performing Self-Taught Electrician</div>
+      <div class="award-org">Simon Matlale · September 2023</div>
+      <p class="award-desc">
+        Recognised for outstanding contribution and rapid skill application after joining the team. Drove a <span class="award-stat">45%</span> increase in production — demonstrating the ability to absorb technical knowledge quickly and apply it with consistency and diligence on the job.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <div class="section-label">Let's Work Together</div>
+  <div class="section-title" style="font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,5vw,48px);color:#fff;letter-spacing:0.04em;margin-bottom:8px;">Get in Touch</div>
+  <p style="color:#71717a;font-size:14px;max-width:400px;margin:0 auto;">Available for employment, apprenticeships, and electrical projects in and around Orkney.</p>
+
+  <div class="contact-grid">
+    <div class="contact-item">
+      <span class="contact-item-icon">📞</span>
+      <span class="contact-item-label">Phone</span>
+      <span class="contact-item-value">068 157 5926</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-item-icon">✉</span>
+      <span class="contact-item-label">Email</span>
+      <span class="contact-item-value">lethaboktaunyane03@gmail.com</span>
+    </div>
+    <div class="contact-item">
+      <span class="contact-item-icon">📍</span>
+      <span class="contact-item-label">Location</span>
+      <span class="contact-item-value">Kanana, Orkney, 2619</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Lethabo Taunyane · Electrical Technician · Orkney, South Africa
+</footer>
+
+</body>
+</html>
